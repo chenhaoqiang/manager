@@ -1,0 +1,214 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background: #fff;
+}
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	color: #b63b4d;
+	text-decoration: none;
+}
+
+.header {
+	background-color: #2d2c41;
+	height: 80px;
+}
+.header-left {
+	/* background-color: red; */
+	color:#FFF;
+}
+.header-left h2 {
+	line-height: 80px;
+	margin: 0;
+}
+.header-center {
+	/* background-color: blue; */
+	color:#FFF;
+	font-size: 16px;
+	font-family: '微软雅黑';
+	font-weight: bold;
+}
+.header-right {
+	/* background-color: green; */
+}
+.header-right .btn {
+	color: #fff;
+}
+.header-right .badge {
+	background-color:red;
+	color: #fff;
+}
+.header-right .msg-menu {
+	line-height: 20px;
+}
+.header-right .btn-group {
+	padding-left: 14px;
+}
+.header-left,.header-center,.header-right {
+	height: 80px;
+	line-height: 80px;
+}
+
+.nav {
+	background-color: #2980B9;
+	text-align: center;
+	padding: 0;
+}
+
+/** =======================
+ * Contenedor Principal
+ ===========================*/
+
+ .accordion {
+ 	width: 100%;
+ 	height:100%;
+ 	margin: 0 auto;
+ 	background: #FFF;
+ 	border-radius: 4px;
+ }
+
+.accordion .link {
+	cursor: pointer;
+	display: block;
+	padding: 15px 0;
+	color: #4D4D4D;
+	font-size: 14px;
+	font-weight: 700;
+	border-bottom: 1px solid #CCC;
+	position: relative;
+	transition: all 0.4s ease;
+}
+
+.accordion li:last-child .link {
+	border-bottom: 0;
+}
+
+.accordion li i {
+	position: absolute;
+	top: 16px;
+	left: 12px;
+	font-size: 18px;
+	color: #595959;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+	right: 12px;
+	left: auto;
+	font-size: 16px;
+}
+
+.accordion li.open .link {
+	color: #b63b4d;
+}
+
+.accordion li.open i {
+	color: #b63b4d;
+}
+.accordion li.open i.fa-chevron-down {
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+/**
+ * Submenu
+ -----------------------------*/
+ .submenu {
+ 	display: none;
+ 	background: #444359;
+ 	font-size: 14px;
+ }
+
+ .submenu li {
+ 	border-bottom: 1px solid #4b4a5e;
+ }
+
+ .submenu a {
+ 	display: block;
+ 	text-decoration: none;
+ 	color: #d9d9d9;
+ 	padding: 12px;
+ 	transition: all 0.25s ease;
+ }
+
+ .submenu a:hover {
+ 	background: #b63b4d;
+ 	color: #FFF;
+ }
+
+/**
+ * layout
+ -----------------------------*/
+ 
+ .content {
+ 	height:100%;
+ 	padding-top: 20px;
+ }
+ .toolbar {
+	margin-left: 30px;
+	margin-bottom: 20px;
+ }
+  .toolbar a {
+  	margin-right: 20px;
+  }
+ .tasklist {
+ 	height: 400px;
+ 	background-color: #C1FFC1;
+ 	margin-left: 30px;
+ 	overflow: auto;
+ }
+ .tasklist .tasklist-title {
+ 	height: 40px;
+ 	font-weight: bold;
+ 	margin-top: 8px;
+ }
+ .tasklist .tasklist-title i {
+ 	float: right;
+ }
+ .tasklist-content i {
+ 	margin-right: 2px;
+ }
+ .tasklist-content .tasklist-uncomplete .newtask {
+ 	color: red;
+ }
+ .tasklist-content .tasklist-complete {
+ 	margin-top: 10px;
+ }
+ .tasklist-content .tasklist-complete li {
+ 	color: #575757;
+ }
+ .tasklist-content .task {
+ 	background-color: #C1FFC1;
+ 	border: none;
+ 	width: 75%;
+ }
+ .tasklist-content .task-edit {
+ 	background-color: #fff;
+ 	border: none;
+ 	width: 75%;
+ }
+ .tasklist-content .tasklist-complete .time {
+ 	float: right;
+  	margin-left: 6px;
+  	font-size: 12px;
+ 	color: #B7B7B7;
+ }
+ .tasklist-content .divider{
+ 	margin-top: 10px;
+    border: thin solid #ccc;
+ }
+ 
+ 

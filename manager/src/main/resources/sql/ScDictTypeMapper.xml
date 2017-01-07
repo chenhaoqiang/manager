@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chq.manager.dao.ScDictTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.chq.manager.model.ScDictType" >
+    <id column="TypeNum" property="typenum" jdbcType="INTEGER" />
+    <result column="TypeName" property="typename" jdbcType="VARCHAR" />
+    <result column="CanModify" property="canmodify" jdbcType="INTEGER" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TypeNum, TypeName, CanModify, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sc_dicttype
+    where TypeNum = #{typenum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sc_dicttype
+    where TypeNum = #{typenum,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chq.manager.model.ScDictType" >
+    insert into sc_dicttype (TypeNum, TypeName, CanModify, 
+      Remark)
+    values (#{typenum,jdbcType=INTEGER}, #{typename,jdbcType=VARCHAR}, #{canmodify,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chq.manager.model.ScDictType" >
+    insert into sc_dicttype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="typenum != null" >
+        TypeNum,
+      </if>
+      <if test="typename != null" >
+        TypeName,
+      </if>
+      <if test="canmodify != null" >
+        CanModify,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="typenum != null" >
+        #{typenum,jdbcType=INTEGER},
+      </if>
+      <if test="typename != null" >
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="canmodify != null" >
+        #{canmodify,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chq.manager.model.ScDictType" >
+    update sc_dicttype
+    <set >
+      <if test="typename != null" >
+        TypeName = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="canmodify != null" >
+        CanModify = #{canmodify,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TypeNum = #{typenum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chq.manager.model.ScDictType" >
+    update sc_dicttype
+    set TypeName = #{typename,jdbcType=VARCHAR},
+      CanModify = #{canmodify,jdbcType=INTEGER},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where TypeNum = #{typenum,jdbcType=INTEGER}
+  </update>
+</mapper>

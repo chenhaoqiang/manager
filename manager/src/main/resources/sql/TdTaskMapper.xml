@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chq.manager.dao.TdTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.chq.manager.model.TdTask" >
+    <id column="ListNum" property="listnum" jdbcType="INTEGER" />
+    <id column="TaskNum" property="tasknum" jdbcType="INTEGER" />
+    <result column="TypeNum" property="typenum" jdbcType="INTEGER" />
+    <result column="LevelNum" property="levelnum" jdbcType="INTEGER" />
+    <result column="Status" property="status" jdbcType="INTEGER" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="ModifyTime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="CompleteTime" property="completetime" jdbcType="TIMESTAMP" />
+    <result column="IsRemind" property="isremind" jdbcType="INTEGER" />
+    <result column="RemindTypeNum" property="remindtypenum" jdbcType="INTEGER" />
+    <result column="RemindTime" property="remindtime" jdbcType="TIME" />
+    <result column="RemindInterval" property="remindinterval" jdbcType="INTEGER" />
+    <result column="IntervalUnit" property="intervalunit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ListNum, TaskNum, TypeNum, LevelNum, Status, CreateTime, ModifyTime, CompleteTime, 
+    IsRemind, RemindTypeNum, RemindTime, RemindInterval, IntervalUnit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.chq.manager.model.TdTaskKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from td_task
+    where ListNum = #{listnum,jdbcType=INTEGER}
+      and TaskNum = #{tasknum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.chq.manager.model.TdTaskKey" >
+    delete from td_task
+    where ListNum = #{listnum,jdbcType=INTEGER}
+      and TaskNum = #{tasknum,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chq.manager.model.TdTask" >
+    insert into td_task (ListNum, TaskNum, TypeNum, 
+      LevelNum, Status, CreateTime, 
+      ModifyTime, CompleteTime, IsRemind, 
+      RemindTypeNum, RemindTime, RemindInterval, 
+      IntervalUnit)
+    values (#{listnum,jdbcType=INTEGER}, #{tasknum,jdbcType=INTEGER}, #{typenum,jdbcType=INTEGER}, 
+      #{levelnum,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{modifytime,jdbcType=TIMESTAMP}, #{completetime,jdbcType=TIMESTAMP}, #{isremind,jdbcType=INTEGER}, 
+      #{remindtypenum,jdbcType=INTEGER}, #{remindtime,jdbcType=TIME}, #{remindinterval,jdbcType=INTEGER}, 
+      #{intervalunit,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chq.manager.model.TdTask" >
+    insert into td_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="listnum != null" >
+        ListNum,
+      </if>
+      <if test="tasknum != null" >
+        TaskNum,
+      </if>
+      <if test="typenum != null" >
+        TypeNum,
+      </if>
+      <if test="levelnum != null" >
+        LevelNum,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime,
+      </if>
+      <if test="completetime != null" >
+        CompleteTime,
+      </if>
+      <if test="isremind != null" >
+        IsRemind,
+      </if>
+      <if test="remindtypenum != null" >
+        RemindTypeNum,
+      </if>
+      <if test="remindtime != null" >
+        RemindTime,
+      </if>
+      <if test="remindinterval != null" >
+        RemindInterval,
+      </if>
+      <if test="intervalunit != null" >
+        IntervalUnit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="listnum != null" >
+        #{listnum,jdbcType=INTEGER},
+      </if>
+      <if test="tasknum != null" >
+        #{tasknum,jdbcType=INTEGER},
+      </if>
+      <if test="typenum != null" >
+        #{typenum,jdbcType=INTEGER},
+      </if>
+      <if test="levelnum != null" >
+        #{levelnum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completetime != null" >
+        #{completetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isremind != null" >
+        #{isremind,jdbcType=INTEGER},
+      </if>
+      <if test="remindtypenum != null" >
+        #{remindtypenum,jdbcType=INTEGER},
+      </if>
+      <if test="remindtime != null" >
+        #{remindtime,jdbcType=TIME},
+      </if>
+      <if test="remindinterval != null" >
+        #{remindinterval,jdbcType=INTEGER},
+      </if>
+      <if test="intervalunit != null" >
+        #{intervalunit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chq.manager.model.TdTask" >
+    update td_task
+    <set >
+      <if test="typenum != null" >
+        TypeNum = #{typenum,jdbcType=INTEGER},
+      </if>
+      <if test="levelnum != null" >
+        LevelNum = #{levelnum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completetime != null" >
+        CompleteTime = #{completetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isremind != null" >
+        IsRemind = #{isremind,jdbcType=INTEGER},
+      </if>
+      <if test="remindtypenum != null" >
+        RemindTypeNum = #{remindtypenum,jdbcType=INTEGER},
+      </if>
+      <if test="remindtime != null" >
+        RemindTime = #{remindtime,jdbcType=TIME},
+      </if>
+      <if test="remindinterval != null" >
+        RemindInterval = #{remindinterval,jdbcType=INTEGER},
+      </if>
+      <if test="intervalunit != null" >
+        IntervalUnit = #{intervalunit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ListNum = #{listnum,jdbcType=INTEGER}
+      and TaskNum = #{tasknum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chq.manager.model.TdTask" >
+    update td_task
+    set TypeNum = #{typenum,jdbcType=INTEGER},
+      LevelNum = #{levelnum,jdbcType=INTEGER},
+      Status = #{status,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      CompleteTime = #{completetime,jdbcType=TIMESTAMP},
+      IsRemind = #{isremind,jdbcType=INTEGER},
+      RemindTypeNum = #{remindtypenum,jdbcType=INTEGER},
+      RemindTime = #{remindtime,jdbcType=TIME},
+      RemindInterval = #{remindinterval,jdbcType=INTEGER},
+      IntervalUnit = #{intervalunit,jdbcType=INTEGER}
+    where ListNum = #{listnum,jdbcType=INTEGER}
+      and TaskNum = #{tasknum,jdbcType=INTEGER}
+  </update>
+</mapper>

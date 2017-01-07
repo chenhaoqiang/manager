@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chq.manager.dao.ScDictMapper" >
+  <resultMap id="BaseResultMap" type="com.chq.manager.model.ScDict" >
+    <id column="TypeNum" property="typenum" jdbcType="INTEGER" />
+    <id column="DictNum" property="dictnum" jdbcType="INTEGER" />
+    <result column="DictCode" property="dictcode" jdbcType="VARCHAR" />
+    <result column="DictName" property="dictname" jdbcType="VARCHAR" />
+    <result column="ParentDictNum" property="parentdictnum" jdbcType="INTEGER" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TypeNum, DictNum, DictCode, DictName, ParentDictNum, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.chq.manager.model.ScDictKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sc_dict
+    where TypeNum = #{typenum,jdbcType=INTEGER}
+      and DictNum = #{dictnum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.chq.manager.model.ScDictKey" >
+    delete from sc_dict
+    where TypeNum = #{typenum,jdbcType=INTEGER}
+      and DictNum = #{dictnum,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chq.manager.model.ScDict" >
+    insert into sc_dict (TypeNum, DictNum, DictCode, 
+      DictName, ParentDictNum, Remark
+      )
+    values (#{typenum,jdbcType=INTEGER}, #{dictnum,jdbcType=INTEGER}, #{dictcode,jdbcType=VARCHAR}, 
+      #{dictname,jdbcType=VARCHAR}, #{parentdictnum,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chq.manager.model.ScDict" >
+    insert into sc_dict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="typenum != null" >
+        TypeNum,
+      </if>
+      <if test="dictnum != null" >
+        DictNum,
+      </if>
+      <if test="dictcode != null" >
+        DictCode,
+      </if>
+      <if test="dictname != null" >
+        DictName,
+      </if>
+      <if test="parentdictnum != null" >
+        ParentDictNum,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="typenum != null" >
+        #{typenum,jdbcType=INTEGER},
+      </if>
+      <if test="dictnum != null" >
+        #{dictnum,jdbcType=INTEGER},
+      </if>
+      <if test="dictcode != null" >
+        #{dictcode,jdbcType=VARCHAR},
+      </if>
+      <if test="dictname != null" >
+        #{dictname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentdictnum != null" >
+        #{parentdictnum,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chq.manager.model.ScDict" >
+    update sc_dict
+    <set >
+      <if test="dictcode != null" >
+        DictCode = #{dictcode,jdbcType=VARCHAR},
+      </if>
+      <if test="dictname != null" >
+        DictName = #{dictname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentdictnum != null" >
+        ParentDictNum = #{parentdictnum,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TypeNum = #{typenum,jdbcType=INTEGER}
+      and DictNum = #{dictnum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chq.manager.model.ScDict" >
+    update sc_dict
+    set DictCode = #{dictcode,jdbcType=VARCHAR},
+      DictName = #{dictname,jdbcType=VARCHAR},
+      ParentDictNum = #{parentdictnum,jdbcType=INTEGER},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where TypeNum = #{typenum,jdbcType=INTEGER}
+      and DictNum = #{dictnum,jdbcType=INTEGER}
+  </update>
+</mapper>

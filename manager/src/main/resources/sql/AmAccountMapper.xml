@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chq.manager.dao.AmAccountMapper">
+  <resultMap id="BaseResultMap" type="com.chq.manager.model.AmAccount">
+    <id column="AccNum" jdbcType="INTEGER" property="accnum" />
+    <result column="AccName" jdbcType="VARCHAR" property="accname" />
+    <result column="PerCode" jdbcType="VARCHAR" property="percode" />
+    <result column="AccType" jdbcType="INTEGER" property="acctype" />
+    <result column="Sex" jdbcType="INTEGER" property="sex" />
+    <result column="PostCode" jdbcType="VARCHAR" property="postcode" />
+    <result column="PhoneNo" jdbcType="VARCHAR" property="phoneno" />
+    <result column="Email" jdbcType="VARCHAR" property="email" />
+    <result column="QQ" jdbcType="VARCHAR" property="qq" />
+    <result column="IdType" jdbcType="INTEGER" property="idtype" />
+    <result column="IdNo" jdbcType="VARCHAR" property="idno" />
+    <result column="Birthday" jdbcType="DATE" property="birthday" />
+    <result column="Country" jdbcType="INTEGER" property="country" />
+    <result column="NativePlace" jdbcType="VARCHAR" property="nativeplace" />
+    <result column="Nation" jdbcType="INTEGER" property="nation" />
+    <result column="Politics" jdbcType="INTEGER" property="politics" />
+    <result column="AccStatus" jdbcType="INTEGER" property="accstatus" />
+    <result column="LoginPwd" jdbcType="VARCHAR" property="loginpwd" />
+    <result column="PwdModifyTime" jdbcType="TIMESTAMP" property="pwdmodifytime" />
+    <result column="RegisterTime" jdbcType="TIMESTAMP" property="registertime" />
+    <result column="LoginTime" jdbcType="TIMESTAMP" property="logintime" />
+    <result column="LastLoginTime" jdbcType="TIMESTAMP" property="lastlogintime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AccNum, AccName, PerCode, AccType, Sex, PostCode, PhoneNo, Email, QQ, IdType, IdNo, 
+    Birthday, Country, NativePlace, Nation, Politics, AccStatus, LoginPwd, PwdModifyTime, 
+    RegisterTime, LoginTime, LastLoginTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from am_account
+    where AccNum = #{accnum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from am_account
+    where AccNum = #{accnum,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chq.manager.model.AmAccount">
+    insert into am_account (AccNum, AccName, PerCode, 
+      AccType, Sex, PostCode, 
+      PhoneNo, Email, QQ, 
+      IdType, IdNo, Birthday, 
+      Country, NativePlace, Nation, 
+      Politics, AccStatus, LoginPwd, 
+      PwdModifyTime, RegisterTime, LoginTime, 
+      LastLoginTime)
+    values (#{accnum,jdbcType=INTEGER}, #{accname,jdbcType=VARCHAR}, #{percode,jdbcType=VARCHAR}, 
+      #{acctype,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, #{postcode,jdbcType=VARCHAR}, 
+      #{phoneno,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{idtype,jdbcType=INTEGER}, #{idno,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{country,jdbcType=INTEGER}, #{nativeplace,jdbcType=VARCHAR}, #{nation,jdbcType=INTEGER}, 
+      #{politics,jdbcType=INTEGER}, #{accstatus,jdbcType=INTEGER}, #{loginpwd,jdbcType=VARCHAR}, 
+      #{pwdmodifytime,jdbcType=TIMESTAMP}, #{registertime,jdbcType=TIMESTAMP}, #{logintime,jdbcType=TIMESTAMP}, 
+      #{lastlogintime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chq.manager.model.AmAccount">
+    insert into am_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accnum != null">
+        AccNum,
+      </if>
+      <if test="accname != null">
+        AccName,
+      </if>
+      <if test="percode != null">
+        PerCode,
+      </if>
+      <if test="acctype != null">
+        AccType,
+      </if>
+      <if test="sex != null">
+        Sex,
+      </if>
+      <if test="postcode != null">
+        PostCode,
+      </if>
+      <if test="phoneno != null">
+        PhoneNo,
+      </if>
+      <if test="email != null">
+        Email,
+      </if>
+      <if test="qq != null">
+        QQ,
+      </if>
+      <if test="idtype != null">
+        IdType,
+      </if>
+      <if test="idno != null">
+        IdNo,
+      </if>
+      <if test="birthday != null">
+        Birthday,
+      </if>
+      <if test="country != null">
+        Country,
+      </if>
+      <if test="nativeplace != null">
+        NativePlace,
+      </if>
+      <if test="nation != null">
+        Nation,
+      </if>
+      <if test="politics != null">
+        Politics,
+      </if>
+      <if test="accstatus != null">
+        AccStatus,
+      </if>
+      <if test="loginpwd != null">
+        LoginPwd,
+      </if>
+      <if test="pwdmodifytime != null">
+        PwdModifyTime,
+      </if>
+      <if test="registertime != null">
+        RegisterTime,
+      </if>
+      <if test="logintime != null">
+        LoginTime,
+      </if>
+      <if test="lastlogintime != null">
+        LastLoginTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accnum != null">
+        #{accnum,jdbcType=INTEGER},
+      </if>
+      <if test="accname != null">
+        #{accname,jdbcType=VARCHAR},
+      </if>
+      <if test="percode != null">
+        #{percode,jdbcType=VARCHAR},
+      </if>
+      <if test="acctype != null">
+        #{acctype,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="postcode != null">
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneno != null">
+        #{phoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="idtype != null">
+        #{idtype,jdbcType=INTEGER},
+      </if>
+      <if test="idno != null">
+        #{idno,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=INTEGER},
+      </if>
+      <if test="nativeplace != null">
+        #{nativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=INTEGER},
+      </if>
+      <if test="politics != null">
+        #{politics,jdbcType=INTEGER},
+      </if>
+      <if test="accstatus != null">
+        #{accstatus,jdbcType=INTEGER},
+      </if>
+      <if test="loginpwd != null">
+        #{loginpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdmodifytime != null">
+        #{pwdmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registertime != null">
+        #{registertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logintime != null">
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastlogintime != null">
+        #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chq.manager.model.AmAccount">
+    update am_account
+    <set>
+      <if test="accname != null">
+        AccName = #{accname,jdbcType=VARCHAR},
+      </if>
+      <if test="percode != null">
+        PerCode = #{percode,jdbcType=VARCHAR},
+      </if>
+      <if test="acctype != null">
+        AccType = #{acctype,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        Sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="postcode != null">
+        PostCode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneno != null">
+        PhoneNo = #{phoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        QQ = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="idtype != null">
+        IdType = #{idtype,jdbcType=INTEGER},
+      </if>
+      <if test="idno != null">
+        IdNo = #{idno,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        Birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="country != null">
+        Country = #{country,jdbcType=INTEGER},
+      </if>
+      <if test="nativeplace != null">
+        NativePlace = #{nativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        Nation = #{nation,jdbcType=INTEGER},
+      </if>
+      <if test="politics != null">
+        Politics = #{politics,jdbcType=INTEGER},
+      </if>
+      <if test="accstatus != null">
+        AccStatus = #{accstatus,jdbcType=INTEGER},
+      </if>
+      <if test="loginpwd != null">
+        LoginPwd = #{loginpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdmodifytime != null">
+        PwdModifyTime = #{pwdmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registertime != null">
+        RegisterTime = #{registertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logintime != null">
+        LoginTime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastlogintime != null">
+        LastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where AccNum = #{accnum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chq.manager.model.AmAccount">
+    update am_account
+    set AccName = #{accname,jdbcType=VARCHAR},
+      PerCode = #{percode,jdbcType=VARCHAR},
+      AccType = #{acctype,jdbcType=INTEGER},
+      Sex = #{sex,jdbcType=INTEGER},
+      PostCode = #{postcode,jdbcType=VARCHAR},
+      PhoneNo = #{phoneno,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      QQ = #{qq,jdbcType=VARCHAR},
+      IdType = #{idtype,jdbcType=INTEGER},
+      IdNo = #{idno,jdbcType=VARCHAR},
+      Birthday = #{birthday,jdbcType=DATE},
+      Country = #{country,jdbcType=INTEGER},
+      NativePlace = #{nativeplace,jdbcType=VARCHAR},
+      Nation = #{nation,jdbcType=INTEGER},
+      Politics = #{politics,jdbcType=INTEGER},
+      AccStatus = #{accstatus,jdbcType=INTEGER},
+      LoginPwd = #{loginpwd,jdbcType=VARCHAR},
+      PwdModifyTime = #{pwdmodifytime,jdbcType=TIMESTAMP},
+      RegisterTime = #{registertime,jdbcType=TIMESTAMP},
+      LoginTime = #{logintime,jdbcType=TIMESTAMP},
+      LastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP}
+    where AccNum = #{accnum,jdbcType=INTEGER}
+  </update>
+</mapper>
